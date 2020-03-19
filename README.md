@@ -3,7 +3,7 @@ REST Document Archive
 
 Простой архив документов с интерфейсом REST.
 * Вы можете прочитать больше об этом проекте в моем блоге: [A REST web service, file uploads & Spring Boot](https://murygin.wordpress.com/2014/10/13/rest-web-service-file-uploads-spring-boot)
-* Репозиторий: https://murygin.wordpress.com/2014/10/13/rest-web-service-file-uploads-spring-boot
+* Репозиторий: https://github.com/murygin/rest-document-archive
 * Open to see the AngularJS frontend: [http://localhost:8080](http://localhost:8080)
 
 REST API
