@@ -58,17 +58,12 @@ public class ArchiveController {
      * Upload
      * ------
      * Name: test
-     * Date: 2020-03-19 13:20:18.833     2020-03-19
+     * Date: 2020-03-19
      * Select file: test.csv
-     * 
-     * @param file A file posted in a multipart request
-     * @param person The name of the uploading person
-     * @param date The date of the document
-     * @return The meta data of the added document
      */
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public @ResponseBody DocumentMetadata handleFileUpload(
-            @RequestParam(value="file", required=true) MultipartFile file ,
+    public @ResponseBody DocumentMetadata fileUpload(
+            @RequestParam(value="file", required=true) MultipartFile file,
             @RequestParam(value="person", required=true) String person,
             @RequestParam(value="date", required=true) @DateTimeFormat(pattern="yyyy-MM-dd") Date date) {
         
@@ -91,10 +86,6 @@ public class ArchiveController {
      * Returns an empty list if no document was found.
      * 
      * Url: /archive/documents?person={person}&date={date} [GET]
-     * 
-     * @param person The name of the uploading person
-     * @param date The date of the document
-     * @return A list of document meta data
      */
     @RequestMapping(value = "/documents", method = RequestMethod.GET)
     public HttpEntity<List<DocumentMetadata>> findDocument(
@@ -108,9 +99,6 @@ public class ArchiveController {
      * Returns the document file from the archive with the given UUID.
      * 
      * Url: /archive/document/{id} [GET]
-     * 
-     * @param id The UUID of a document
-     * @return The document file
      */
     @RequestMapping(value = "/document/{id}", method = RequestMethod.GET)
     public HttpEntity<byte[]> getDocument(@PathVariable String id) {         
