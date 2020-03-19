@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * REST web service for archive service {@link IArchiveService}.
@@ -51,12 +52,10 @@ public class ArchiveTestController {
      */
     @RequestMapping(value = "/test/upload", method = RequestMethod.POST)
     public @ResponseBody DocumentMetadata fileUpload(
-            @RequestParam(value="file", required=true) MultipartFile file,
-            @RequestParam(value="person", required=true) String person,
-            @RequestParam(value="date", required=true) @DateTimeFormat(pattern="yyyy-MM-dd") Date date) {
+            @RequestParam(value="file", required=true) MultipartFile file) {
         
         try {
-            Document document = new Document(file.getBytes(), file.getOriginalFilename(), date, person );
+            Document document = new Document(file.getBytes(), file.getOriginalFilename(), new Date(), UUID.randomUUID().toString());
             getArchiveService().save(document);
             return document.getMetadata();
         } catch (RuntimeException e) {

@@ -11,53 +11,29 @@
 		</div>
 		<div id="main" ng-controller="ArchiveCtrl">
 			<h2>Search documents</h2>
-			<table class="table">
-			<tr>
-				<td>Person</td>
-				<td>Date</td>
-			</tr>
-			<tr>
-				<td><input type="text" ng-model="person" ng-change="search(person, date);" /></td>
-				<td><input type="date" ng-model="date" ng-change="search(person, date);" /></td>
-			</tr>
-		</table>
-		<table id="table-6">
-			<thead>
-    			<tr>
-    				<th>File</th>
-    				<th>Person</th>
-    				<th>Date</th>
-    			</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="metadata in metadataList">
-					<td><a href="/archive/document/{{metadata.uuid}}">{{metadata.fileName}}</a></td>
-					<td><a href="/archive/document/{{metadata.uuid}}">{{metadata.personName}}</a></td>
-					<td><a href="/archive/document/{{metadata.uuid}}">{{metadata.documentDate | date:'yyyy-MM-dd'}}</a></td>
-				</tr>
-			</tbody>		
-		</table>
+			<table id="table-6">
+				<thead>
+					<tr>
+						<th>File</th>
+						<th>ID</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="metadata in metadataList">
+						<td><a href="/archive/document/{{metadata.uuid}}">{{metadata.fileName}}</a></td>
+						<td><a href="/archive/document/{{metadata.uuid}}">{{metadata.personName}}</a></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div id="sidebar" ng-controller="UploadCtrl">
 			<h2>Upload</h2>
 			<table class="table">
 				<tr>
-					<td align="right">Person</td>
-					<td><input type="text" ng-model="person"></td>
+					<td><input type="file" class="custom-file-input" file-model="myFile"></td>
 				</tr>
 				<tr>
-					<td align="right">Date</td>
-					<td><input type="date" ng-model="date"></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="file" class="custom-file-input" file-model="myFile">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button ng-click="uploadFile()">Upload</button>
-					</td>
+					<td align="center"><button ng-click="uploadFile()">Upload</button></td>
 				</tr>
 			</table>
 		</div>

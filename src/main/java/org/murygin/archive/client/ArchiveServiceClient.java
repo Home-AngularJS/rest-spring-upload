@@ -82,10 +82,10 @@ public class ArchiveServiceClient implements IArchiveService {
     }
 
     private String writeDocumentToTempFile(Document document) throws IOException, FileNotFoundException {
-        Path path;       
-        path = Files.createTempDirectory(document.getUuid());  
+        Path path;
+        path = Files.createTempDirectory(document.getUuid());
         String tempDirPath = path.toString();
-        File file = new File(tempDirPath,document.getFileName());
+        File file = new File(tempDirPath, document.getFileName());
         FileOutputStream fo = new FileOutputStream(file);
         fo.write(document.getFileData());    
         fo.close();

@@ -52,11 +52,9 @@ app.controller('UploadCtrl', [ '$scope', 'fileUpload',
 		function($scope, fileUpload) {
 			$scope.uploadFile = function() {
 				var file = $scope.myFile;
-				var person = $scope.person;
-				var date = $scope.date;
 				console.log('file is ' + JSON.stringify(file));
 				var uploadUrl = "/archive/test/upload";
-				fileUpload.uploadFileToUrl(uploadUrl, file, person, date);
+				fileUpload.uploadFileToUrl(uploadUrl, file);
 			};
 		} ]);
 
