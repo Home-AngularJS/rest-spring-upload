@@ -6,6 +6,8 @@ REST Document Archive
 * Репозиторий: https://github.com/murygin/rest-document-archive
 * Open to see the AngularJS frontend: [http://localhost:8080](http://localhost:8080)
 
+![screenshot-1.png](screenshot-1.png)
+
 REST API
 --------
 
