@@ -17,10 +17,10 @@ app.directive('fileModel', [ '$parse', function($parse) {
 } ]);
 
 app.service('ArchiveService', [ '$http', '$rootScope', function($http, $rootScope) {
-	this.search = function(name, date) {
+	this.search = function(person, date) {
 		$http.get("http://localhost:8080/archive/test/documents", {
 			params : {
-				person : name,
+				person : person,
 				date : date
 			}
 		}).success(function(response) {
@@ -31,10 +31,10 @@ app.service('ArchiveService', [ '$http', '$rootScope', function($http, $rootScop
 }]);
 
 app.service('fileUpload', ['$http','ArchiveService', function($http, ArchiveService) {
-	this.uploadFileToUrl = function(uploadUrl, file, name, date) {
+	this.uploadFileToUrl = function(uploadUrl, file, person, date) {
 		var fd = new FormData();
 		fd.append('file', file);
-		fd.append('person', name);
+		fd.append('person', person);
 		fd.append('date', date);
 		$http.post(uploadUrl, fd, {
 			transformRequest : angular.identity,
@@ -52,19 +52,19 @@ app.controller('UploadCtrl', [ '$scope', 'fileUpload',
 		function($scope, fileUpload) {
 			$scope.uploadFile = function() {
 				var file = $scope.myFile;
-				var name = $scope.name;
+				var person = $scope.person;
 				var date = $scope.date;
 				console.log('file is ' + JSON.stringify(file));
 				var uploadUrl = "/archive/test/upload";
-				fileUpload.uploadFileToUrl(uploadUrl, file, name, date);
+				fileUpload.uploadFileToUrl(uploadUrl, file, person, date);
 			};
 		} ]);
 
 app.controller('ArchiveCtrl', function($scope, $http) {
-	$scope.search = function(name, date) {
+	$scope.search = function(person, date) {
 		$http.get("http://localhost:8080/archive/test/documents", {
 			params : {
-				person : name,
+				person : person,
 				date : date
 			}
 		}).success(function(response) {

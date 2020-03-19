@@ -13,19 +13,19 @@
 			<h2>Search documents</h2>
 			<table class="table">
 			<tr>
-				<td>Name</td>
+				<td>Person</td>
 				<td>Date</td>
 			</tr>
 			<tr>
-				<td><input type="text" ng-model="name" ng-change="search(name,date);" /></td>
-				<td><input type="date" ng-model="date" ng-change="search(name,date);" /></td>
+				<td><input type="text" ng-model="person" ng-change="search(person, date);" /></td>
+				<td><input type="date" ng-model="date" ng-change="search(person, date);" /></td>
 			</tr>
 		</table>
 		<table id="table-6">
 			<thead>
     			<tr>
     				<th>File</th>
-    				<th>Name</th>
+    				<th>Person</th>
     				<th>Date</th>
     			</tr>
 			</thead>
@@ -42,11 +42,11 @@
 			<h2>Upload</h2>
 			<table class="table">
 				<tr>
-					<td>Name</td>
-					<td><input type="text" ng-model="name"></td>
+					<td align="right">Person</td>
+					<td><input type="text" ng-model="person"></td>
 				</tr>
 				<tr>
-					<td>Date</td>
+					<td align="right">Date</td>
 					<td><input type="date" ng-model="date"></td>
 				</tr>
 				<tr>
