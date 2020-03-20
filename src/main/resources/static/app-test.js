@@ -31,16 +31,12 @@ app.service('ArchiveService', [ '$http', '$rootScope', function($http, $rootScop
 }]);
 
 app.service('fileUpload', ['$http','ArchiveService', function($http, ArchiveService) {
-	this.uploadFileToUrl = function(uploadUrl, file, person, date) {
-		var fd = new FormData();
-		fd.append('file', file);
-		fd.append('person', person);
-		fd.append('date', date);
+	this.uploadFileToUrl = function(uploadUrl, file) {
+        var fd = new FormData();
+        fd.append("file", file);
 		$http.post(uploadUrl, fd, {
-			transformRequest : angular.identity,
-			headers : {
-				'Content-Type' : undefined
-			}
+            transformRequest: angular.identity,
+			headers: { 'Content-Type': undefined }
 		}).success(function() {
 			ArchiveService.search(null, null);
 		}).error(function() {

@@ -22,11 +22,11 @@ import java.util.UUID;
  *   file: A file posted in a multipart request
  *   person: The name of the uploading person
  *   date: The date of the document
- *   
+ *
  * /archive/documents?person={person}&date={date}           Find documents  GET
  *   person: The name of the uploading person
  *   date: The date of the document
- *   
+ *
  * /archive/document/{id}                                   Get a document  GET
  *   id: The UUID of a document
  */
@@ -46,14 +46,10 @@ public class ArchiveTestController {
      *
      * Upload
      * ------
-     * Name: test
-     * Date: 2020-03-19
      * Select file: test.csv
      */
     @RequestMapping(value = "/test/upload", method = RequestMethod.POST)
-    public @ResponseBody DocumentMetadata fileUpload(
-            @RequestParam(value="file", required=true) MultipartFile file) {
-        
+    public @ResponseBody DocumentMetadata fileUpload(@RequestParam(value="file") MultipartFile file) {
         try {
             Document document = new Document(file.getBytes(), file.getOriginalFilename(), new Date(), UUID.randomUUID().toString());
             getArchiveService().save(document);
@@ -66,12 +62,12 @@ public class ArchiveTestController {
             throw new RuntimeException(e);
         }      
     }
-    
+
     /**
-     * Finds document in the archive. Returns a list of document meta data 
+     * Finds document in the archive. Returns a list of document meta data
      * which does not include the file data. Use getDocument to get the file.
      * Returns an empty list if no document was found.
-     * 
+     *
      * Url: /archive/documents?person={person}&date={date} [GET]
      */
     @RequestMapping(value = "/test/documents", method = RequestMethod.GET)
